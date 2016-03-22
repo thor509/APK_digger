@@ -1,4 +1,13 @@
-# AndroBugs Framework
+
+#APK Digger
+a customized branch of AndroBugs, add
+* a web portal
+* readable report
+* our own android vulerability hunting experience
+
+Thanks to the author of AndroBugs!
+
+### AndroBugs Framework
 
 AndroBugs Framework is an Android vulnerability analysis system that helps developers or hackers find potential security vulnerabilities in Android applications. 
 No splendid GUI interface, but the most efficient (less than 2 minutes per scan in average) and more accurate.
