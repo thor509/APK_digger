@@ -425,11 +425,11 @@ class Writer:
 
             if (REPORT_OUTPUT == TYPE_REPORT_OUTPUT_ONLY_FILE):
                 self.output_and_force_print_console(
-                    "AndroBugs analyzing time: " + str(stopwatch_analyze_time) + " secs")
+                    "APK digger analyzing time: " + str(stopwatch_analyze_time) + " secs")
                 self.output_and_force_print_console(
                     "Total elapsed time: " + str(stopwatch_total_elapsed_time) + " secs")
             else:
-                self.output("AndroBugs analyzing time: " + str(stopwatch_analyze_time) + " secs")
+                self.output("APK digger analyzing time: " + str(stopwatch_analyze_time) + " secs")
                 self.output("Total elapsed time: " + str(stopwatch_total_elapsed_time) + " secs")
 
         if args.store_analysis_result_in_db:
@@ -880,7 +880,7 @@ def get_all_components_by_permission(xml, permission):
 
 def parseArgument():
 
-    parser = argparse.ArgumentParser(description='AndroBugs Framework - Android App Security Vulnerability Scanner')
+    parser = argparse.ArgumentParser(description='APK digger Framework - Android App Security Vulnerability Scanner')
     parser.add_argument("-f", "--apk_file", help="APK File to analyze", type=str, required=False)
     parser.add_argument("-m", "--analyze_mode", help="Specify \"single\"(default) or \"massive\"", type=str,
                         required=False, default=ANALYZE_MODE_SINGLE)
