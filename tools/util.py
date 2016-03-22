@@ -19,9 +19,6 @@ from ConfigParser import SafeConfigParser
 from config import *
 
 
-
-
-
 class Writer:
     def __init__(self):
         self.__package_information = {}
@@ -880,8 +877,8 @@ def get_all_components_by_permission(xml, permission):
 
 def parseArgument():
 
-    parser = argparse.ArgumentParser(description='AndroBugs Framework - Android App Security Vulnerability Scanner')
-    parser.add_argument("-f", "--apk_file", help="APK File to analyze", type=str, required=False)
+    parser = argparse.ArgumentParser(description='Apk digger - Android App Security Vulnerability Scanner')
+    parser.add_argument("-f", "--apk_file", help="APK File to analyze", type=str, required=True) #this args is required ##added by heen
     parser.add_argument("-m", "--analyze_mode", help="Specify \"single\"(default) or \"massive\"", type=str,
                         required=False, default=ANALYZE_MODE_SINGLE)
     parser.add_argument("-b", "--analyze_engine_build", help="Analysis build number.", type=int, required=False,
