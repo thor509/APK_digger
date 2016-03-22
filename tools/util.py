@@ -422,11 +422,11 @@ class Writer:
 
             if (REPORT_OUTPUT == TYPE_REPORT_OUTPUT_ONLY_FILE):
                 self.output_and_force_print_console(
-                    "AndroBugs analyzing time: " + str(stopwatch_analyze_time) + " secs")
+                    "APK digger analyzing time: " + str(stopwatch_analyze_time) + " secs")
                 self.output_and_force_print_console(
                     "Total elapsed time: " + str(stopwatch_total_elapsed_time) + " secs")
             else:
-                self.output("AndroBugs analyzing time: " + str(stopwatch_analyze_time) + " secs")
+                self.output("APK digger analyzing time: " + str(stopwatch_analyze_time) + " secs")
                 self.output("Total elapsed time: " + str(stopwatch_total_elapsed_time) + " secs")
 
         if args.store_analysis_result_in_db:
