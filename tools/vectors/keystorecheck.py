@@ -77,7 +77,7 @@ class KeystoreCheck(VulnerabilityVector):
 
                 if list_protected_keystore:
 
-                    self.context.startWriter("HACKER_KEYSTORE_SSL_PINNING2", LEVEL_NOTICE, "KeyStore Protection Information",
+                    self.context.writer.startWriter("HACKER_KEYSTORE_SSL_PINNING2", LEVEL_NOTICE, "KeyStore Protection Information",
                                        "The Keystores below are \"protected\" by password and seem using SSL-pinning (Total: " + str(
                                            len(
                                                list_protected_keystore)) + "). You can use \"Portecle\" tool to manage the certificates in the KeyStore:",
