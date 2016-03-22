@@ -73,7 +73,7 @@ class PermissionCheck(VulnerabilityVector):
                                        "This app should only be released and signed by device manufacturer or Google and put under '/system/app'. If not, it may be a malicious app.")
 
                     for permission in list_user_permission_critical_manufacturer:
-                        self.context.wirter.write("System use-permission found: \"" + permission + "\"")
+                        self.context.writer.write("System use-permission found: \"" + permission + "\"")
 
                 if list_user_permission_critical:
                     self.context.writer.startWriter("USE_PERMISSION_CRITICAL", LEVEL_CRITICAL,
