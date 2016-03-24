@@ -109,7 +109,7 @@ class FilesystemCheck(VulnerabilityVector):
                 if list_path_getSharedPreferences:
                     self.context.writer.write("[getSharedPreferences]")
                     for i in list_path_getSharedPreferences:
-                        self.context.show_Path(self.context.d, i)
+                        self.context.writer.show_Path(self.context.d, i)
                     self.context.writer.write("--------------------------------------------------")
                 if list_path_openFileOutput:
                     self.context.writer.write("[openFileOutput]")
