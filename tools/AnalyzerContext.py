@@ -130,12 +130,12 @@ class AnalyzerContext(object):
                 if (str_target_sdk_version is None) or (str_target_sdk_version == ""):
                     raise ValueError
                 else:
-                    int_target_sdk = int(str_target_sdk_version)
-                    self.writer.writeInf("targetSdk", int_target_sdk, "Target Sdk")
+                    self.int_target_sdk = int(str_target_sdk_version)
+                    self.writer.writeInf("targetSdk", self.int_target_sdk, "Target Sdk")
             except ValueError:
                 # Check: http://developer.android.com/guide/topics/manifest/uses-sdk-element.html
                 # If not set, the default value equals that given to minSdkVersion.
-                int_target_sdk = self.int_min_sdk
+                self.int_target_sdk = self.int_min_sdk
 
             md5, sha1, sha256, sha512 = get_hashes_by_filename(APK_FILE_NAME_STRING)
             self.writer.writeInf("file_md5", md5, "MD5   ")
