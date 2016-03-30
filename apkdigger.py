@@ -33,7 +33,7 @@ class module_args(object):
 class Analyzer():
 
 
-    def __init__(self, filepath=None, single=False):
+    def __init__(self,filepath=None,single=False):
 
         self.stopwatch_start = ''
         self.analyze_start = ''
@@ -43,7 +43,7 @@ class Analyzer():
         self.modules = []
         self.vectors = []
         self.single_mode = single
-
+        self.analyze_time = ''
 
         self.load_vectors()
         self.writer = Writer()
@@ -56,6 +56,38 @@ class Analyzer():
 
         if filepath is not None:
            self.args.apk_file = filepath
+
+
+    def time_format(self, timedelta):
+
+        ret = []
+
+        total = str(timedelta)
+
+        a = total.split(':')
+
+        if len(a) != 3:
+            return None
+
+        if a[0] != '0':
+            ret.append("%s小时"%a[0])
+
+
+        if a[1] != '00':
+            ret.append("%s分钟"%a[1])
+
+
+        ret.append("%.5s秒"%a[2].strip('0'))
+
+
+        return ''.join(ret)
+
+
+
+
+
+
+
 
 
 
@@ -77,6 +109,10 @@ class Analyzer():
         stopwatch_total_elapsed_time = now - self.stopwatch_start
         stopwatch_analyze_time = now - self.analyze_start
         stopwatch_loading_vm = self.analyze_start - self.stopwatch_start
+
+
+        self.analyze_time = self.time_format(stopwatch_total_elapsed_time)
+
 
         self.writer.writeInf_ForceNoPrint("time_total", stopwatch_total_elapsed_time.total_seconds())
         self.writer.writeInf_ForceNoPrint("time_analyze", stopwatch_analyze_time.total_seconds())
@@ -178,6 +214,8 @@ class Analyzer():
             self.stopwatch_start = datetime.now()
 
             context = AnalyzerContext(self.writer,self.args)
+            self.md5 = context.md5
+            self.sig = context.sig
 
 
             self.analyze_start = datetime.now()
@@ -191,6 +229,7 @@ class Analyzer():
 
             self.finish_writer()
 
+        
 
             analyze_signature = get_hash_scanning(self.writer)
             self.writer.writeInf_ForceNoPrint("signature_unique_analyze",
@@ -287,5 +326,7 @@ class Analyzer():
 if __name__ == "__main__":
 
 
-   Analyzer(single=True).run()
+
+
+    Analyzer(single=True).run()
 

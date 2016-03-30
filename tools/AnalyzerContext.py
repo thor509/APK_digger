@@ -3,9 +3,10 @@
 
 import imp,base64
 
-from zipfile import BadZipfile
+
 from . import *
 
+from django.utils import timezone
 
 
 
@@ -193,6 +194,14 @@ class AnalyzerContext(object):
             self.efficientStringSearchEngine.search(self.d, self.allstrings)
 
             self.PermissionName_to_ProtectionLevel = self.a.get_PermissionName_to_ProtectionLevel_mapping()
+
+
+
+            t = package_name + '-' + sha512 + '-' + str(time.time()) + '-' + str(random.randrange(10000000, 99999999))
+            self.sig = hashlib.sha256(t).hexdigest()
+            self.md5 = md5
+           
+
 
 
 
