@@ -37,6 +37,10 @@ class  OpenPortCheck(VulnerabilityVector):
             path_udpport = self.context.vmx.get_tainted_packages().search_class_methods_exact_match("Ljava/net/DatagramSocket;","<init>", "(I)V")
             path_udpport = self.context.filteringEngine.filter_list_of_paths(self.context.d, path_udpport)
 
+            """
+            if you want to get the port number, refer to nativecheck.py
+            """
+
             if (path_tcpport or path_udpport):
                 self.context.writer.startWriter("OPEN PORT INFO", LEVEL_CRITICAL, "Open Port Checking", "Open Port Code Found: ",["OPEN_PORT"])
 
