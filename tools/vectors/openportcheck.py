@@ -41,14 +41,33 @@ class  OpenPortCheck(VulnerabilityVector):
             if you want to get the port number, refer to nativecheck.py
             """
 
+
+
             if (path_tcpport or path_udpport):
                 self.context.writer.startWriter("OPEN PORT INFO", LEVEL_CRITICAL, "Open Port Checking", "Open Port Code Found: ",["OPEN_PORT"])
 
                 if path_tcpport:
-                    self.context.writer.write("TCP Port")
+                    for i in analysis.trace_Register_value_by_Param_in_source_Paths(self.context.d, path_tcpport):
+                        # the class ServerSocket is getResult()[0] and tcp port number is getResult()[1]
+                        tcp_port_num = i.getResult()[1]
+                        if tcp_port_num is not None:
+                            self.context.writer.write("TCP Port: "+str(tcp_port_num))
+                        else:
+                            self.context.writer.write("TCP Port: args in runtime. ")
+
+                    self.context.writer.write("Which are in the following sequence:  ")
                     for path in path_tcpport:
                         self.context.writer.show_Path(self.context.d, path)
+
                 if path_udpport:
-                    self.context.writer.write("UDP Port")
+                    for i in analysis.trace_Register_value_by_Param_in_source_Paths(self.context.d, path_udpport):
+                        # the class DatagramSocket is getResult()[0] and udp port number is getResult()[1]
+                        udp_port_num = i.getResult()[1]
+                        if udp_port_num is not None:
+                            self.context.writer.write("UDP Port: "+str(udp_port_num))
+                        else:
+                            self.context.writer.write("UDP Port: args in runtime. ")
+
+                    self.context.writer.write("Which are in the following sequence:  ")
                     for path in path_udpport:
                         self.context.writer.show_Path(self.context.d, path)
