@@ -31,12 +31,11 @@ class  DynamicReceiverCheck(VulnerabilityVector):
                  Context.registerReceiver
 
         """
-       #path_dyn_receiver = self.context.vmx.get_tainted_packages().search_methods("L\*","registerReceiver","(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;")
-       #path_dyn_receiver = self.context.vmx.get_tainted_packages().search_class_methods_exact_match("Landroid/content/Context;","registerReceiver","(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;")
-        path_dyn_receiver = self.context.vmx.get_tainted_packages().search_class_methods_exact_match("Landroid/content/IntentFilter;","<init>","(Ljava/lang/String;)V")
-        print path_dyn_receiver
+
+         # note, there is a white space between multi args !!!
+        path_dyn_receiver = self.context.vmx.get_tainted_packages().search_methods_exact_match("registerReceiver","(Landroid/content/BroadcastReceiver; Landroid/content/IntentFilter;)Landroid/content/Intent;")
+       # path_dyn_receiver = self.context.vmx.get_tainted_packages().search_class_methods_exact_match("Landroid/content/IntentFilter;","<init>","(Ljava/lang/String;)V")
         path_dyn_receiver = self.context.filteringEngine.filter_list_of_paths(self.context.d, path_dyn_receiver)
-        print path_dyn_receiver
 
         if path_dyn_receiver:
             self.context.writer.startWriter("Dynamic Receiver Info", LEVEL_NOTICE, "Dynamic Receiver Checking",
