@@ -71,3 +71,5 @@ class  OpenPortCheck(VulnerabilityVector):
                     self.context.writer.write("Which are in the following sequence:  ")
                     for path in path_udpport:
                         self.context.writer.show_Path(self.context.d, path)
+
+                self.context.writer.write("Please confirm if they are vulnerable! ")
