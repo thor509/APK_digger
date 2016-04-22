@@ -37,6 +37,6 @@ class  BroadcastCheck(VulnerabilityVector):
                                             "Broadcast Found: ",["BROADCAST_INFO"])
             for path in path_broadcast_normal:
                 self.context.writer.show_Path(self.context.d, path)
-        self.context.writer.write("Please confirm if sensitive information is in the broadcast! ")
+            self.context.writer.write("Please confirm if sensitive information is in the broadcast! ")
 
 
