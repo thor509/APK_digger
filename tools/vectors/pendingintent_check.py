@@ -85,24 +85,23 @@ class  PendingIntentLeakCheck(VulnerabilityVector):
 
 
         list_path_other = []
-        print "sure pending intent method:"
-        print list_path_sure_method
+      #  print "sure pending intent method:"
+      #  print list_path_sure_method
 
-        print "suspicious pending intent method:"
-        print list_path_suspicious_method
+      #  print "suspicious pending intent method:"
+      #  print list_path_suspicious_method
 
         if list_path_suspicious_method:
             list_path_other = list(set(list_path_suspicious_method) - set(list_path_sure_method))
 
         if list_path_other:
-            print "other pending intent method:"
-            print list_path_other
+      #      print "other pending intent method:"
+      #      print list_path_other
             self.context.writer.startWriter("PendingIntent Info", LEVEL_NOTICE, "PendingIntent Leaking Checking",
                                             "PendingIntent Found: ",["PENDING_INTENT_INFO"])
 
             for pathp in list_path_other:
-                for path in pathp:
-                        self.context.writer.show_Path(self.context.d, path)
+                self.context.writer.show_Path(self.context.d, pathp)
             self.context.writer.write("Please confirm if PendingIntent with null intent is leaking! ")
 
     def __analysis(self,path_pending_intent_method):
@@ -128,7 +127,7 @@ class  PendingIntentLeakCheck(VulnerabilityVector):
         #######################################################
         # For Debugging, print all the instructions in stack#
         #
-        #print register_analyzer.show()
+        # print register_analyzer.show()
         ######################################################k
         i = 0
         match_once = 0
