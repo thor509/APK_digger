@@ -3,6 +3,8 @@
 
 import imp,base64
 
+import os
+
 from zipfile import BadZipfile
 from . import *
 
@@ -33,6 +35,7 @@ class AnalyzerContext(object):
                     args.line_max_output_characters = LINE_MAX_OUTPUT_CHARACTERS_WINDOWS - LINE_MAX_OUTPUT_INDENT
                 else:
                     args.line_max_output_characters = LINE_MAX_OUTPUT_CHARACTERS_LINUX - LINE_MAX_OUTPUT_INDENT
+
 
             if not os.path.isdir(args.report_output_dir):
                 os.mkdir(args.report_output_dir)
@@ -246,7 +249,7 @@ class AnalyzerContext(object):
           self.writer.writeInf("platform", "Android", "Platform")
 
           # fake package_name for dex file
-          self.writer.writeInf("package_name", DEX_FILE_NAME_STRING,  "Package Name")
+          self.writer.writeInf("package_name", os.path.basename(DEX_FILE_NAME_STRING),  "Package Name")
 
           md5, sha1, sha256, sha512 = get_hashes_by_filename(DEX_FILE_NAME_STRING)
           self.writer.writeInf("file_md5", md5, "MD5   ")
