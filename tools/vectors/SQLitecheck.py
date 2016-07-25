@@ -18,12 +18,12 @@ class SQLiteCheck(VulnerabilityVector):
 
         def analyze(self):
 
-            self.TransactionNonExclusive_check()
-
-            self.Information_Disclosure_check()
-
+            # these two check will check context's sdk which is in AndroidManifest.xml of apk, so
+            # they are for apk analysis #added by heen
+            if self.context.a is not None:
+                self.TransactionNonExclusive_check()
+                self.Information_Disclosure_check()
             self.SSE_check()
-
             self.PRAGMA_key_check()
 
 

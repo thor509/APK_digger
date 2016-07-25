@@ -18,10 +18,11 @@ class PermissionCheck(VulnerabilityVector):
 
 
        def analyze(self):
-
-           self.Critical_permission_check()
-           self.dangerous_permission_check()
-           self.normal_permission_check()
+            #permission check is only for apk #added by heen
+           if self.context.a is not None:
+               self.Critical_permission_check()
+               self.dangerous_permission_check()
+               self.normal_permission_check()
 
        def Critical_permission_check(self):
 

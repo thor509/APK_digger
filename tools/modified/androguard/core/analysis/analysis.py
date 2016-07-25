@@ -1675,7 +1675,7 @@ class TaintedPackages(object):
             ex = re.compile( excluded_dst_classes, re.I )
             for m, _ in self.get_packages() :
                 if not ex.search( m.get_name() ) :
-                    l.extend( m.search_class_method_exact_match( class_name, name, descriptor ) )
+                   l.extend( m.search_class_method_exact_match( class_name, name, descriptor ) )
         else:
             for m, _ in self.get_packages() :
                 l.extend( m.search_class_method_exact_match( class_name, name, descriptor ) )

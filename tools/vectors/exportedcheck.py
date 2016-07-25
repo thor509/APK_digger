@@ -17,13 +17,14 @@ class ExportedCheck(VulnerabilityVector):
 
 
         def analyze(self):
-
-            self.prefix_lost_check()
-            self.componenent_check()
-            self.service_check()
-            self.provider_check()
-            self.intent_filter_check()
-            self.implicit_service_check()
+            # only for apk analysis #added by heen
+            if self.context.a is not None:
+                self.prefix_lost_check()
+                self.componenent_check()
+                self.service_check()
+                self.provider_check()
+                self.intent_filter_check()
+                self.implicit_service_check()
 
 
         def prefix_lost_check(self):

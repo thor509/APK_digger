@@ -53,10 +53,14 @@ class Analyzer():
             self.args = parseArgument()
         else:
             self.args = module_args()
-
+        """
         if filepath is not None:
-           self.args.apk_file = filepath
-
+            print filepath
+            if(filepath.endwith(".apk")):
+                self.args.apk_file = filepath
+            if(filepath.endwith(".dex")):
+                self.args.dex_file = filepath
+        """
 
 
 

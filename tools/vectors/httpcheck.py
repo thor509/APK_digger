@@ -17,10 +17,9 @@ class HttpCheck(VulnerabilityVector):
 
 
         def analyze(self):
-
-            self.httpconnection_check()
-
-
+            #only for apk analysis #added by heen
+            if self.context.a is not None:
+                self.httpconnection_check()
 
         def  httpconnection_check(self):
                 #HttpURLConnection bug checking:

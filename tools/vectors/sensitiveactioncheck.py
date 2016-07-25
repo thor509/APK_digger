@@ -18,9 +18,12 @@ class ActionCheck(VulnerabilityVector):
 
         def analyze(self):
 
-            self.sending_SMS_check()
-            self.shared_user_id_check()
+            #since shareuserId is in apk's AndroidManifest.xml, it is for apk analysis #added by heen
+            if self.context.a is not None:
+                self.shared_user_id_check()
+
             self.file_delete_check()
+            self.sending_SMS_check()
 
 
 

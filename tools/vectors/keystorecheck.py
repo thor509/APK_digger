@@ -18,10 +18,12 @@ class KeystoreCheck(VulnerabilityVector):
 
        def analyze(self):
 
-            self.KeyStore_null_PWD_check()
-            self.Find_all_keystore()
-
-            self.bksCheck()
+           # only for apk analysis #added by heen
+           if self.context.a is not None:
+               self.Find_all_keystore()
+           # for apk and dex analysis
+           self.bksCheck()
+           self.KeyStore_null_PWD_check()
 
 
        def KeyStore_null_PWD_check(self):

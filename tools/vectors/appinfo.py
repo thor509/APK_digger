@@ -20,13 +20,15 @@ class AppinfoCheck(VulnerabilityVector):
 
        def analyze(self):
 
-            self.debugcheck()
-            self.checkGCM()
-            self.networkCheck()
-            self.signCheck()
-            self.install_from_Google_Play_check()
-            self.adb_backup_check()
-
+        # only for apk analysis #added by heen
+           if self.context.a is not None:
+               self.debugcheck()
+               self.checkGCM()
+               self.adb_backup_check()
+               self.networkCheck()
+        # for apk and dex analysis
+           self.signCheck()
+           self.install_from_Google_Play_check()
 
 
        def networkCheck(self):
@@ -117,8 +119,11 @@ class AppinfoCheck(VulnerabilityVector):
 
        def debugcheck(self):
 
+            if self.context.a is not None:
+                is_debug_open = self.context.a.is_debuggable()  #Check 'android:debuggable'
+            else:    #when dex analysis, omit debugcheck  #added by heen
+                return
 
-            is_debug_open = self.context.a.is_debuggable()  #Check 'android:debuggable'
             if is_debug_open:
                 self.context.writer.startWriter("DEBUGGABLE", LEVEL_CRITICAL, "Android Debug Mode Checking",
                                    "DEBUG mode is ON(android:debuggable=\"true\") in AndroidManifest.xml. This is very dangerous. The attackers will be able to sniffer the debug messages by Logcat. Please disable the DEBUG mode if it is a released application.",

@@ -19,7 +19,9 @@ class NativeCheck(VulnerabilityVector):
         def analyze(self):
 
             self.nativecheck()
-            self.Bangclecheck()
+            #Bangcle check is only for apk  #added by heen
+            if self.context.a is not None:
+                self.Bangclecheck()
             self.dynamic_load_check()
 
 
